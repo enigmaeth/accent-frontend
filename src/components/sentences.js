@@ -1,6 +1,4 @@
 export const corpus = [
-
-
 "The birch canoe slid on the smooth planks.",
 "Glue the sheet to the dark blue background",
 "It's easy to tell the depth of a well.",
@@ -211,7 +209,6 @@ export const corpus = [
 "The hostess taught the new maid to serve",
 "He wrote his last novel there at the inn",
 "Even the worst will beat his low score",
-" ",
 "The cement had dried when he moved it",
 "The loss of the second ship was hard to take",
 "The fly made its way along the wall",
@@ -222,7 +219,6 @@ export const corpus = [
 "Write at once or you may forget it",
 "The doorknob was made of bright clean brass",
 "The wreck occurred by the bank on Main Street",
-" ",
 "A pencil with black lead writes best",
 "Coax a young calf to drink from a bucket",
 "Schools for ladies teach charm and grace",
@@ -723,5 +719,4 @@ export const corpus = [
 "A severe storm tore down the barn",
 "She called his name many times",
 "When you hear the bell, come quickly"
-
 ]

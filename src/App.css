@@ -27,3 +27,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.italic-headings-page h5 {
+  font-style: italic;
+}
