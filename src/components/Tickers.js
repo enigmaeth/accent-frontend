@@ -13,6 +13,8 @@ class Tickers extends Component {
     this.stopShow = this.stopShow.bind(this);
     this.startShow = this.startShow.bind(this);
     this.goto = this.goto.bind(this);
+    this.colors = ['#040087', '#87006c'];
+    this.fontSizes = ['2em', '4em'];
     this.state = {
       file_counter: -1,
       line_counter: 0,
@@ -21,6 +23,7 @@ class Tickers extends Component {
           The sentences will appear here. Click on 'Next Set' to begin.
         </h3>
       ),
+      color: 1,
       repeat_counter: 3,
       showingAlert: false,
       alert: {type: '', text: ""}
@@ -42,7 +45,8 @@ class Tickers extends Component {
     setTimeout(this.NodeNull, 1000);
     const sentences = this.readFromFile();
     this.setState({
-      displayTwo: <h3>{sentences}</h3>
+      displayTwo: <h3>{sentences}</h3>,
+      color: 1 - this.state.color
     });
   }
 
@@ -87,7 +91,8 @@ class Tickers extends Component {
     this.setState({
       // file_counter: Math.min(this.state.file_counter + 1, this.state.allSentences.length - 1)
       file_counter: this.state.file_counter + 1,
-      line_counter: 0
+      line_counter: 0,
+      color: 1 - this.state.color
     });
     this.startShow();
   }
@@ -97,7 +102,8 @@ class Tickers extends Component {
     this.setState({
       // file_counter: Math.max(0, this.state.file_counter - 1)
       file_counter: Math.max(0, this.state.file_counter - 1),
-      line_counter: 0
+      line_counter: 0,
+      color: 1 - this.state.color
     });
     this.startShow();
   }
@@ -107,12 +113,23 @@ class Tickers extends Component {
     this.setState({
       file_counter: valueAsNumber - 1,
       line_counter: 0,
-      displayTwo: <h3>...</h3>
+      displayTwo: <h3>...</h3>,
+      color: 1 - this.state.color
     });
     this.startShow();
   }
 
   render() {
+    let textStyle = {
+      color: this.colors[this.state.color],
+    }
+    let jumbotronElement = '';
+    if(this.state.color){
+      jumbotronElement = <Jumbotron><h2 style={textStyle}>{this.state.displayTwo}</h2></Jumbotron>;
+    }
+    else{
+      jumbotronElement = <Jumbotron><h4 style={textStyle}>{this.state.displayTwo}</h4></Jumbotron>
+    }
     return (
       <div>
         <br />
@@ -122,7 +139,7 @@ class Tickers extends Component {
           <strong>{this.state.line_counter} of 10</strong>
         </p>
         <br />
-        <Jumbotron>{this.state.displayTwo}</Jumbotron>
+        {jumbotronElement}
           <Button color="primary" onClick={this.onNext}>
             Next Set
           </Button>{" "}
